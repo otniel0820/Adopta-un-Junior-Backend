@@ -8,7 +8,7 @@ const sequelize = new Sequelize(
   config.dbPassword,
   {
     host: config.dbHost,
-    dialect: "postgresql",
+    dialect: "postgres",
   }
 );
 
