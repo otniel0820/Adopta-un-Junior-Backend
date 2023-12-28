@@ -1,16 +1,32 @@
-import { septupModels } from "../db/models";
-import * as sequelize from "../libs/sequelize";
-import { Junior } from '../db/models/juniorUser.model';
+import { Junior } from "../db/models/juniorUser.model";
 
+export class JuniorService {
+  constructor() {}
 
+  async find() {
+    const res = await Junior.findAll();
+    return res;
+  }
 
-class JuniorService {
+  async findOne(id: number) {
+    const res = await Junior.findByPk(id);
+    return res;
+  }
 
-    constructor(){
+  async create(data: any) {
+    const res = await Junior.create(data);
+    return res;
+  }
 
-    }
+  async update(id: number, data: any) {
+    const model = await this.findOne(id);
+    const res = await model?.update(data);
+    return res;
+  }
 
-    async find(){
-       const res = await models
-    }
+  async delete(id: number) {
+    const model = await this.findOne(id);
+    await model?.destroy();
+    return { deleted: true };
+  }
 }
